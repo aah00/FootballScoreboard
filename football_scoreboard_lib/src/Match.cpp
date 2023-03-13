@@ -24,8 +24,8 @@ unsigned int Match::get_total_score() const
 
 std::string Match::get_result()
 {
-    std::string res = teams.home + ":" + std::to_string(score.home) + "::"
-                    + teams.away + ":" + std::to_string(score.away);
+    std::string res = teams.home + " " + std::to_string(score.home) + "  -  "
+                    + teams.away + " " + std::to_string(score.away);
     return res;
 }
 

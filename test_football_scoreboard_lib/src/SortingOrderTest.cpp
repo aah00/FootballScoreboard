@@ -29,17 +29,17 @@ public:
         sb->start_game("Brazil", "Argentina");
         sb->start_game("Germany", "Italy");
 
-        expected_starttime_order.push_back("Germany:0::Italy:0");
-        expected_starttime_order.push_back("Brazil:0::Argentina:0");
-        expected_starttime_order.push_back("Norway:0::Spain:0");
+        expected_starttime_order.push_back("Germany 0  -  Italy 0");
+        expected_starttime_order.push_back("Brazil 0  -  Argentina 0");
+        expected_starttime_order.push_back("Norway 0  -  Spain 0");
 
-        expected_scoreline_order.push_back("Brazil:1::Argentina:3");
-        expected_scoreline_order.push_back("Norway:1::Spain:0");
-        expected_scoreline_order.push_back("Germany:0::Italy:0");
+        expected_scoreline_order.push_back("Brazil 1  -  Argentina 3");
+        expected_scoreline_order.push_back("Norway 1  -  Spain 0");
+        expected_scoreline_order.push_back("Germany 0  -  Italy 0");
 
-        expected_mixed_order.push_back("Brazil:1::Argentina:3");
-        expected_mixed_order.push_back("Germany:1::Italy:0");
-        expected_mixed_order.push_back("Norway:1::Spain:0");
+        expected_mixed_order.push_back("Brazil 1  -  Argentina 3");
+        expected_mixed_order.push_back("Germany 1  -  Italy 0");
+        expected_mixed_order.push_back("Norway 1  -  Spain 0");
     }
 
     void TearDown()
