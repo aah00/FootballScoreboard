@@ -12,6 +12,14 @@ team score.
 - Get a summary of games in progress ordered by their total score. The games with the same
 total score will be returned ordered by the most recently started match in the scoreboard.
 
+## Assumption
+- Two teams can have only one running match unless the game is differentiated by home and away basis, i.e.
+    - if Norway(home):Spain(away) is already running, then
+      - then a new match Norway(home):Spain(away) cannot be started,
+      - but Spain(home):Norway(away) can be started
+- Start time of a game is automatically initialized, no need to provide start time manually
+- There is no end time of a game unless a call is maded to end the game
+
 </br>
 
 # Pre-requisite
