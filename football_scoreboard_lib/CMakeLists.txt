@@ -5,6 +5,7 @@ if(DEFINED ${target}_USER_DEFINED)
 endif()
 
 add_library(${target} STATIC
+    src/ScoreBoard.cpp
 )
 
 target_include_directories(${target} PUBLIC
