@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "ScoreBoard.h"
-#include "Result.h"
+#include "ScoreBoard.hpp"
+#include "Result.hpp"
 #include <vector>
 
 using namespace LiveScore;
