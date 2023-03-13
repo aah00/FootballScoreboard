@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Result.hpp"
+#include "Match.hpp"
 #include <string>
 #include <vector>
 
@@ -76,6 +77,15 @@ public:
     * @return Result::Ok when the operation is successful
     */
     Result get_summary(std::vector<std::string>& summary) const;
+
+private:
+
+    /**
+    * Sort score board based on teams-score and start time.
+    */
+    void sort_score_board();
+
+    std::vector <Match> score_board_list;
 };
 
 }

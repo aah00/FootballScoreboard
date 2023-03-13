@@ -1,5 +1,8 @@
 
-#include <ScoreBoard.hpp>
+#include "ScoreBoard.hpp"
+#include "Match.hpp"
+#include <algorithm>
+#include <vector>
 
 using namespace LiveScore;
 
@@ -21,7 +24,16 @@ ScoreBoard::~ScoreBoard()
 */
 Result ScoreBoard::start_game(std::string home_team, std::string away_team)
 {
-    throw "Function not implemented.";
+    ParticipatingTeams participants(home_team, away_team);
+    auto team_compare = [participants](const Match& m) { return m.get_teams() == participants; };
+    if (find_if(score_board_list.begin(), score_board_list.end(), team_compare) != score_board_list.end())
+    {
+        return Result::Game_already_exist;
+    }
+
+    score_board_list.push_back(Match(home_team, away_team));
+    sort_score_board();
+    return Result::Ok;
 }
 
 /**
@@ -74,4 +86,19 @@ std::string ScoreBoard::get_summary() const
 Result ScoreBoard::get_summary(std::vector<std::string>& summary) const
 {
     throw "Function not implemented.";
+}
+
+void ScoreBoard::sort_score_board() {
+    std::sort(score_board_list.begin(), score_board_list.end(),
+        [](const auto &lhs, const auto &rhs) {
+            if (lhs.get_total_score() == rhs.get_total_score())
+            {
+                return lhs.get_start_time() > rhs.get_start_time();
+            }
+            else
+            {
+                return lhs.get_total_score() > rhs.get_total_score();
+            }
+        }
+    );
 }

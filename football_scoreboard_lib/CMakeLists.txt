@@ -5,6 +5,7 @@ if(DEFINED ${target}_USER_DEFINED)
 endif()
 
 add_library(${target} STATIC
+    src/Match.cpp
     src/ScoreBoard.cpp
 )
 
