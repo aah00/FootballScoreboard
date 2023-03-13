@@ -1,5 +1,5 @@
 # FootballScoreboard
-A simple c++ based library to show all the ongoing matches and their scores.
+A simple c++ (c++14 standard) based library to show all the ongoing matches and their scores.
 
 The scoreboard supports the following operations:
 - Start a new game, assuming initial score 0 – 0 and adding it the scoreboard.
@@ -17,7 +17,7 @@ total score will be returned ordered by the most recently started match in the s
 # Pre-requisite
 - CMake (version 3.17 or newer)
 - Make
-- gcc/g++ (with version c++20 support)
+- gcc/g++ (require c++14 standard)
 - GTest utilities
 
 
