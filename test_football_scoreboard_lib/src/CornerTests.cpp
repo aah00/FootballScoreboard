@@ -43,8 +43,8 @@ public:
 TEST_F (CornerTest, StartTimeScore)
 {
     auto result = sb->start_game("Norway", "Spain");
-    std::string summary = sb->get_summary("Norway", "Spain");
-    EXPECT_EQ("1. Norway:0::Spain:0", result);
+    std::string summary = sb->get_summary();
+    EXPECT_EQ("1. Norway:0::Spain:0", summary);
 }
 
 TEST_F (CornerTest, DuplicateMatch)
@@ -72,7 +72,7 @@ TEST_F (CornerTest, EndNotExistingMatch)
 TEST_F (CornerTest, EndLastGame)
 {
     auto result = sb->start_game("Norway", "Spain");
-    result = sb->delete_game("Norway", "Spain");
+    result = sb->end_game("Norway", "Spain");
     EXPECT_EQ(Result::Ok, result);
     std::string summary = sb->get_summary();
     EXPECT_EQ("", summary);
