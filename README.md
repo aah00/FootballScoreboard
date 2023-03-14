@@ -28,4 +28,14 @@ total score will be returned ordered by the most recently started match in the s
 - gcc/g++ (require c++14 standard)
 - GTest utilities
 
+# How to build the library and execute tests
+- Move to `build` directory
+- Type `cmake ..`
+- Then type `make` and static library `libFootballScoreBoardLib.a` shall be created
+- To run the test, type `make test`. Alternatively, can run the test executable
+  `test_football_scoreboard_lib/FootballScoreboardLib_test`
 
+# Future work
+- Add code-coverage tool to check how much of the code is covered by the written tests
+- Configure clang-format to enforce code formatting by CI/CD
+- Update CMake configuration to add `GTest` as submodule
