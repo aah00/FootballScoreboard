@@ -44,7 +44,7 @@ TEST_F (CornerTest, StartTimeScore)
 {
     auto result = sb->start_game("Norway", "Spain");
     std::string summary = sb->get_summary();
-    EXPECT_EQ("1. Norway:0::Spain:0", summary);
+    EXPECT_EQ("1. Norway 0  -  Spain 0\n", summary);
 }
 
 TEST_F (CornerTest, DuplicateMatch)

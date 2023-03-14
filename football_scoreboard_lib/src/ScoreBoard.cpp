@@ -3,6 +3,8 @@
 #include "Match.hpp"
 #include <algorithm>
 #include <vector>
+#include <sstream>
+#include <string>
 
 using namespace LiveScore;
 
@@ -47,10 +49,18 @@ Result ScoreBoard::start_game(std::string home_team, std::string away_team)
 * @return Result::Ok when the operation is successful or
           Result::Game_not_found if the game does not exist.
 */
-Result ScoreBoard::set_score (std::string home_team, std::string away_team,
+Result ScoreBoard::set_score(std::string home_team, std::string away_team,
         unsigned int home, unsigned int away)
 {
-    throw "Function not implemented.";
+    ParticipatingTeams participants(home_team, away_team);
+    auto team_compare = [participants](const Match& m) { return m.get_teams() == participants; };
+    auto it = find_if(score_board_list.begin(), score_board_list.end(), team_compare);
+    if (it != score_board_list.end())   // check if the game exists or not
+    {
+        it->set_score(home, away);
+        return Result::Ok;
+    }
+    return Result::Game_not_found;      // game is not running
 }
 
 /**
@@ -74,7 +84,13 @@ Result ScoreBoard::end_game (std::string home_team, std::string away_team)
 */
 std::string ScoreBoard::get_summary() const
 {
-    throw "Function not implemented.";
+    std::stringstream summary;
+    int match_number = 1;
+    for (auto i : score_board_list)
+    {
+        summary << match_number++ << ". " << i.get_result() << std::endl;
+    }
+    return summary.str();
 }
 
 /**
@@ -85,7 +101,11 @@ std::string ScoreBoard::get_summary() const
 */
 Result ScoreBoard::get_summary(std::vector<std::string>& summary) const
 {
-    throw "Function not implemented.";
+    for(auto match: score_board_list)
+    {
+        summary.push_back(match.get_result());
+    }
+    return Result::Ok;
 }
 
 void ScoreBoard::sort_score_board() {
