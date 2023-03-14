@@ -75,7 +75,15 @@ Result ScoreBoard::set_score(std::string home_team, std::string away_team,
 */
 Result ScoreBoard::end_game (std::string home_team, std::string away_team)
 {
-    throw "Function not implemented.";
+    ParticipatingTeams participants(home_team, away_team);
+    auto team_compare = [participants](const Match& m) { return m.get_teams() == participants; };
+    auto it = find_if(score_board_list.begin(), score_board_list.end(), team_compare);
+    if (it != score_board_list.end())
+    {
+        score_board_list.erase(it);
+        return Result::Ok;
+    }
+    return Result::Game_not_found;
 }
 
 /**
@@ -109,7 +117,8 @@ Result ScoreBoard::get_summary(std::vector<std::string>& summary) const
     return Result::Ok;
 }
 
-void ScoreBoard::sort_score_board() {
+void ScoreBoard::sort_score_board()
+{
     std::sort(score_board_list.begin(), score_board_list.end(),
         [](const auto &lhs, const auto &rhs) {
             if (lhs.get_total_score() == rhs.get_total_score())
