@@ -58,6 +58,7 @@ Result ScoreBoard::set_score(std::string home_team, std::string away_team,
     if (it != score_board_list.end())   // check if the game exists or not
     {
         it->set_score(home, away);
+        sort_score_board();
         return Result::Ok;
     }
     return Result::Game_not_found;      // game is not running
