@@ -39,3 +39,6 @@ total score will be returned ordered by the most recently started match in the s
 - Add code-coverage tool to check how much of the code is covered by the written tests
 - Configure clang-format to enforce code formatting by CI/CD
 - Update CMake configuration to add `GTest` as submodule
+
+# Test-run result
+![Successful testrun](docs/test_result.png)
